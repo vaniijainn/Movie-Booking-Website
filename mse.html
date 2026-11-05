@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MovieTime - Movie Booking</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #222;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav h2 {
+            color: #ff5555;
+            margin: 5px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        header h1 {
+            color: #ff5555;
+        }
+
+        /* Movie Cards */
+        .movies {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .movie-container {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 15px;
+        }
+
+        .card {
+            background-color: white;
+            width: 250px;
+            flex: 0 0 250px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px gray;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            border-radius: 8px;
+        }
+
+        .card h3 {
+            color: #d93636;
+        }
+
+        /* Booking Form */
+        .booking {
+            background-color: white;
+            width: 80%;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px gray;
+        }
+
+        .booking h2 {
+            text-align: center;
+            color: #d93636;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #d93636;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #a82020;
+        }
+
+        #price {
+            color: green;
+            font-weight: bold;
+        }
+
+        /* Confirmation */
+        #confirmation {
+            display: none;
+            background-color: #e4ffe4;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid green;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: white;
+            width: 80%;
+            max-width: 550px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .faq h2 {
+            text-align: center;
+            color: #d93636;
+        }
+
+        .answer {
+            display: none;
+            background-color: #eee;
+            padding: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .booking, .faq {
+                width: 85%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <h2>MovieTime</h2>
+
+        <div>
+            <a href="#home">Home</a>
+            <a href="#movies">Movies</a>
+            <a href="#booking">Booking</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <header id="home">
+        <h1>Welcome to MovieTime</h1>
+        <p>Book Your Favourite Movie Tickets Easily!</p>
+    </header>
+
+    <!-- Movies Section -->
+    <section class="movies" id="movies">
+
+        <h2>Now Showing</h2>
+
+        <div class="movie-container">
+
+            <!-- Movie 1 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500"
+                alt="Adventure Movie">
+
+                <h3>Adventure World</h3>
+                <p>Genre: Adventure</p>
+                <p>Duration: 2 Hours</p>
+                <p>An exciting adventure movie.</p>
+            </div>
+
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=500"
+                alt="Romantic Movie">
+
+                <h3>Love Story</h3>
+                <p>Genre: Romance</p>
+                <p>Duration: 2.5 Hours</p>
+                <p>A beautiful romantic movie.</p>
+            </div>
+
+            <!-- Movie 3 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=500"
+                alt="Thriller Movie">
+
+                <h3>Dark Mystery</h3>
+                <p>Genre: Thriller</p>
+                <p>Duration: 2 Hours</p>
+                <p>A suspense-filled movie.</p>
+            </div>
+
+            <!-- Movie 4 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=500"
+                alt="Space Movie">
+
+                <h3>Space Adventure</h3>
+                <p>Genre: Sci-Fi</p>
+                <p>Duration: 2 Hours</p>
+                <p>A thrilling journey into space.</p>
+            </div>
+
+            <!-- Movie 5 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=500"
+                alt="Horror Movie">
+
+                <h3>Haunted House</h3>
+                <p>Genre: Horror</p>
+                <p>Duration: 2.5 Hours</p>
+                <p>A mysterious horror story.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <div class="booking" id="booking">
+
+        <h2>Book Your Tickets</h2>
+
+        <form>
+
+            <label>Customer Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label>Email:</label>
+            <input type="text" id="email" placeholder="Enter your email">
+
+            <label>Select Movie:</label>
+            <select id="movie">
+                <option value="">Choose Movie</option>
+                <option>Adventure World</option>
+                <option>Love Story</option>
+                <option>Dark Mystery</option>
+                <option>Space Adventure</option>
+                <option>Haunted House</option>
+            </select>
+
+            <label>Select Theatre:</label>
+            <select id="theatre">
+                <option value="">Choose Theatre</option>
+                <option>PVR Cinemas</option>
+                <option>INOX Theatre</option>
+                <option>City Cinema</option>
+            </select>
+
+            <label>Select Show Timing:</label>
+            <select id="timing">
+                <option value="">Choose Timing</option>
+                <option>10:00 AM</option>
+                <option>2:00 PM</option>
+                <option>6:00 PM</option>
+                <option>9:00 PM</option>
+            </select>
+
+            <label>Select Seat Category:</label>
+            <select id="seat" onchange="calculatePrice()">
+                <option value="">Choose Seat</option>
+                <option value="150">Regular - Rs. 150</option>
+                <option value="250">Premium - Rs. 250</option>
+                <option value="350">Recliner - Rs. 350</option>
+            </select>
+
+            <label>Number of Tickets:</label>
+            <input type="number" id="tickets" value="1"
+            min="1" max="10" oninput="calculatePrice()">
+
+            <p id="price">Total Price: Rs. 0</p>
+
+            <button type="button" onclick="bookTicket()">
+                Book Now
+            </button>
+
+        </form>
+
+        <div id="confirmation"></div>
+
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq" id="faq">
+
+        <h2>Frequently Asked Questions</h2>
+
+        <button onclick="showAnswer('answer1')">
+            How can I book tickets?
+        </button>
+
+        <div class="answer" id="answer1">
+            Select your movie, theatre, timing and seats.
+            Fill your details and click Book Now.
+        </div>
+
+        <button onclick="showAnswer('answer2')">
+            Can I choose my seat category?
+        </button>
+
+        <div class="answer" id="answer2">
+            Yes, you can choose Regular, Premium or Recliner seats.
+        </div>
+
+        <button onclick="showAnswer('answer3')">
+            How is ticket price calculated?
+        </button>
+
+        <div class="answer" id="answer3">
+            Ticket price depends on seat category and
+            number of tickets.
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 MovieTime | All Rights Reserved</p>
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        // Calculate Ticket Price
+
+        function calculatePrice() {
+
+            var seat = document.getElementById("seat").value;
+
+            var tickets = document.getElementById("tickets").value;
+
+            var total = seat * tickets;
+
+            document.getElementById("price").innerHTML =
+            "Total Price: Rs. " + total;
+
+            return total;
+        }
+
+
+        // Book Tickets
+
+        function bookTicket() {
+
+            var name = document.getElementById("name").value;
+
+            var email = document.getElementById("email").value;
+
+            var movie = document.getElementById("movie").value;
+
+            var theatre = document.getElementById("theatre").value;
+
+            var timing = document.getElementById("timing").value;
+
+            var seat = document.getElementById("seat").value;
+
+            var tickets = document.getElementById("tickets").value;
+
+
+            // Validate Booking Details
+
+            if (name == "" || email == "" || movie == "" ||
+            theatre == "" || timing == "" || seat == "") {
+
+                alert("Please fill all the details!");
+
+            }
+
+            else if (email.indexOf("@") == -1 ||
+            email.indexOf(".") == -1) {
+
+                alert("Please enter a valid email!");
+
+            }
+
+            else if (tickets < 1 || tickets > 10) {
+
+                alert("Please select 1 to 10 tickets!");
+
+            }
+
+            else {
+
+                var total = calculatePrice();
+
+                var seatName = document.getElementById("seat");
+
+                var selectedSeat =
+                seatName.options[seatName.selectedIndex].text;
+
+
+                // Display Confirmation
+
+                document.getElementById("confirmation").style.display =
+                "block";
+
+                document.getElementById("confirmation").innerHTML =
+
+                "<h3>Booking Confirmed!</h3>" +
+
+                "<p>Name: " + name + "</p>" +
+
+                "<p>Email: " + email + "</p>" +
+
+                "<p>Movie: " + movie + "</p>" +
+
+                "<p>Theatre: " + theatre + "</p>" +
+
+                "<p>Show Timing: " + timing + "</p>" +
+
+                "<p>Seat Category: " + selectedSeat + "</p>" +
+
+                "<p>Number of Tickets: " + tickets + "</p>" +
+
+                "<h3>Total Amount: Rs. " + total + "</h3>" +
+
+                "<p>Thank You for Booking with MovieTime!</p>";
+
+            }
+
+        }
+
+
+        // FAQ Interactive Section
+
+        function showAnswer(id) {
+
+            var answer = document.getElementById(id);
+
+            if (answer.style.display == "block") {
+
+                answer.style.display = "none";
+
+            }
+
+            else {
+
+                answer.style.display = "block";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html> 
